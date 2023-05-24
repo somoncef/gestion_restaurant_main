@@ -10,8 +10,8 @@ from items import views as v
 
 def index(req):
     if req.method == 'POST':
-        username=req.POST['username']
-        passw=req.POST['pass']
+        username=req.POST.get('username')
+        passw=req.POST.get('pass')
         user=authenticate(username=username, password=passw)
         if user is not None:
             login(req, user)
@@ -40,10 +40,10 @@ def signup(req):
         myuser.last_name=lname
         myuser.save() 
         messages.success(req , "Successfully created")
-        return redirect('login.html')
-            
-    return render(req,'signup.html')
+        return redirect('login')
+    else:      
+        return render(req,'signup.html')
 
 def home(respons):
-    return render(respons,'base.html')
+    return render(respons,'home.html')
 
