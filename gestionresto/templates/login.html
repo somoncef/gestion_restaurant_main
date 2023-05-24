@@ -1,4 +1,5 @@
 {% extends 'base.html' %}  {% block content %} 
+<form method="POST" action="">
 <section class="vh-100">
   <div class="container py-5 h-100">
     <div class="row d-flex align-items-center justify-content-end h-100">
@@ -7,12 +8,13 @@
           <!-- Email input -->
           <div class="form-outline mb-4">
             <input
-              type="email"
-              id="form1Example13"
+              type="text"
+              id="username"
+              name="username"
               class="form-control form-control-lg"
             />
-            <label class="form-label" for="form1Example13" style="color: white"
-              >Username</label
+            <label class="form-label" for="form1Example13" style="color:black" placeholder="Username"
+              ></label
             >
           </div>
 
@@ -20,11 +22,12 @@
           <div class="form-outline mb-4">
             <input
               type="password"
-              id="form1Example23"
+              id="pass"
+              name="pass"
               class="form-control form-control-lg"
             />
-            <label class="form-label" for="form1Example23" style="color: white"
-              >Password</label
+            <label class="form-label" for="form1Example23" style="color:black" placeholder="Password"
+              ></label
             >
           </div>
 
@@ -33,7 +36,7 @@
           ></div>
 
           <!-- Submit button -->
-          <button type="submit" class="btn btn-primary btn-lg btn-block">
+          <button type="submit"  class="btn btn-primary btn-lg btn-block">
             Sign in
           </button>
         </form>
@@ -44,4 +47,5 @@
 <style type="text/css">
   
 </style>
+</form>
 {% endblock %}
