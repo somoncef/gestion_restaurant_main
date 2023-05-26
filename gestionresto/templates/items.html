@@ -1,5 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-
+<table>
+    <tr>
+        <td>
 <div id="filter-section">
   <h2>Filter</h2>
   <form>
@@ -13,21 +15,24 @@
                  {% endfor %}
 
     </select>
+    
 
     <!-- Add more filter options based on your criteria -->
 
     <input type="submit" value="Apply Filters">
   </form>
 </div>
-
+</td>
+<td>
 <div class="container d-flex justify-content-center mt-50 mb-50">
         
         <div class="row gy-3 my-3">
           {% for item in items %}
            <div class="col-md-4 mt-2">
                 <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-img-actions h-200">
+
+                                    <div class="card-body ">
+                                        <div class="card-img-actions ">
                                             
                                                 <img src="{{item.image.url}}" class="card-img img-fluid" width="96" height="350" alt="">
                                               
@@ -65,7 +70,9 @@
            </div> 
         </div>
     </div>
-        
+    </td>
+    </tr>
+        </table>
     <style>
       
      
@@ -83,6 +90,7 @@
 
 
 .card {
+    height: 75vh;
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -93,7 +101,7 @@
     background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
-    border-radius: .1875rem;
+    border-radius: .1878rem;
 }
 
 .card-img-actions {

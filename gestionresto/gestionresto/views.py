@@ -15,10 +15,12 @@ def index(req):
         user=authenticate(username=username, password=passw)
         if user is not None:
             login(req, user)
+            return redirect(v.default)
         else:
             messages.error(req,"bad username or password")
+            return redirect('login')
 
-        return redirect(v.default)
+        
         
     return render(req,'login.html',)
     
@@ -47,3 +49,5 @@ def signup(req):
 def home(respons):
     return render(respons,'home.html')
 
+def about(respons):
+    return render(respons,'about.html')
