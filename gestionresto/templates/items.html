@@ -1,5 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-
+<table>
+    <tr>
+        <td>
 <div id="filter-section">
   <h2>Filter</h2>
   <form>
@@ -13,13 +15,15 @@
                  {% endfor %}
 
     </select>
+    
 
     <!-- Add more filter options based on your criteria -->
 
     <input type="submit" value="Apply Filters">
   </form>
 </div>
-
+</td>
+<td>
 <div class="container d-flex justify-content-center mt-50 mb-50">
         
         <div class="row gy-3 my-3">
@@ -66,7 +70,9 @@
 
         </div>
     </div>
-        
+    </td>
+    </tr>
+        </table>
     <style>
       
      
@@ -84,6 +90,7 @@
 
 
 .card {
+    height: 75vh;
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -94,7 +101,7 @@
     background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
-    border-radius: .1875rem;
+    border-radius: .1878rem;
 }
 
 .card-img-actions {
