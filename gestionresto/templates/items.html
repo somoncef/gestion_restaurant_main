@@ -26,8 +26,8 @@
           {% for item in items %}
            <div class="col-md-4 mt-2">
                 <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-img-actions h-200">
+                                    <div class="card-body h-500">
+                                        <div class="card-img-actions ">
                                             
                                                 <img src="{{item.image.url}}" class="card-img img-fluid" width="96" height="350" alt="">
                                               
@@ -59,10 +59,11 @@
 
                                     </div>
                                 </div>
-                                
+                                           
+           </div> {% endfor %} 
            </div> 
-           {% endfor %}
-           </div> 
+           
+
         </div>
     </div>
         
@@ -108,7 +109,6 @@
 
 .card-img{
 width: 100%;
-height: 15 vw;
 object-fit: cover;
 }
 
