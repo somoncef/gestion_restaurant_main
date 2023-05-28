@@ -1,0 +1,4 @@
+gestion_restaurant_main\scripts\activate  
+cd gestion_restaurant_main  
+cd gestionresto 
+py manage.py runserver 
