@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import item
 
 
+
 # Create your views here.
 def default(request):
     def get_all_categories():

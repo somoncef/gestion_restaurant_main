@@ -4,6 +4,8 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from items import views as v
+from django.http import JsonResponse
+
 
 
 
@@ -51,3 +53,7 @@ def home(respons):
 
 def about(respons):
     return render(respons,'about.html')
+
+def addtocart(req):
+    return JsonResponse("it is working",safe=False)
+

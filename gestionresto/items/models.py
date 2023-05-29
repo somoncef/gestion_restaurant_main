@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+import uuid
 
 # Create your models here.
 
@@ -24,5 +26,20 @@ class item(models.Model):
         return self.name
     
     
+class Cart(models.Model):
+    id=models.UUIDField(default=uuid.uuid4,primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    complete=models.BooleanField(default=False)
     
+
+    def __str__(self):
+        return str(self.id) 
+    
+class cartitems(models.Model):
+    product=models.ForeignKey(item,on_delete=models.CASCADE,related_name="items") 
+    cart= models.ForeignKey(Cart ,on_delete=models.CASCADE,related_name="cartitem")  
+    quantity=models.IntegerField(default=0)  
+
+    def __str__(self):
+        return str(self.product.name)  
     

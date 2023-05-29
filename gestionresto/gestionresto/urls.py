@@ -14,6 +14,7 @@ urlpatterns = [
     path('', views.home,name="index"),
     path('signup/', views.signup),
     path('about/', views.about),
+    path('addtocart/', views.addtocart,name="addtocart"),
 
    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

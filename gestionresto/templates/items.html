@@ -1,8 +1,6 @@
 {% extends 'base.html' %} {% block content %}
-<table>
-    <tr>
-        <td>
-<div id="filter-section">
+
+<!-- <div id="filter-section">
   <h2>Filter</h2>
   <form>
     <label for="price">Price Range:</label>
@@ -17,13 +15,12 @@
     </select>
     
 
-    <!-- Add more filter options based on your criteria -->
+     Add more filter options based on your criteria 
 
     <input type="submit" value="Apply Filters">
   </form>
-</div>
-</td>
-<td>
+</div> -->
+
 <div class="container d-flex justify-content-center mt-50 mb-50">
         
         <div class="row gy-3 my-3">
@@ -59,7 +56,7 @@
 
                                         <div class="text-muted mb-3">34 reviews</div>
 
-                                        <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
+                                        <button value="{{item.id}}" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
 
                                     </div>
                                 </div>
@@ -70,9 +67,6 @@
 
         </div>
     </div>
-    </td>
-    </tr>
-        </table>
     <style>
       
      
@@ -153,6 +147,50 @@ a{
 }
 
     </style>
+    <script>
+        function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+
+
+let btns=document.querySelectorAll(".btn")
+btns.forEach(btn => {
+    btn.addEventListener("click",addToCart)
+});
+function addToCart(e) {
+  let item_id = e.target.value;
+  let url = "/addtocart";
+  let data = { id: item_id };
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": csrftoken,
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    })
+    
+}
+
+    </script>
     
 
 {% endblock %}
