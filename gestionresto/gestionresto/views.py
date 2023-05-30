@@ -54,6 +54,5 @@ def home(respons):
 def about(respons):
     return render(respons,'about.html')
 
-def addtocart(req):
-    return JsonResponse("it is working",safe=False)
+
 

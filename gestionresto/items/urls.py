@@ -6,5 +6,5 @@ from . import views
 
 urlpatterns = [
     path('', views.default),
-    path('', views.default),
+    path('addtocart/', views.addtocart,name="addtocart"),
 ]
