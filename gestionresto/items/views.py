@@ -1,6 +1,6 @@
 import json
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import item,Cart
 from .models import cartitems as Cartitem
 
@@ -27,3 +27,29 @@ def addtocart(req):
 
         print(cartitem)
     return JsonResponse("it is working",safe=False)
+
+def cart(request):
+    
+    cart = None
+    cartitems = []
+    
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user, complete=False)
+        cartitems = cart.cartitem.all()
+    
+    context = {"cart":cart, "items":cartitems}
+    return render(request, "cart.html", context)
+
+def removefromcart(request, id):
+    cart_item = get_object_or_404(Cartitem, id=id)
+    cart_item.delete()
+    return redirect('cart')
+
+def addquantity(request, id,qyant):
+    cart_item = get_object_or_404(Cartitem, id=id)
+    cart_item.quantity += qyant
+    return redirect('cart')
+def removequantity(request, id,qyant):
+    cart_item = get_object_or_404(Cartitem, id=id)
+    cart_item.quantity -= qyant
+    return redirect('cart')

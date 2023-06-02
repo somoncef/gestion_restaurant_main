@@ -1,10 +1,11 @@
 
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from items import views as v
 from django.http import JsonResponse
+from django.contrib.auth import logout as django_logout
 
 
 
@@ -35,24 +36,30 @@ def signup(req):
         email=req.POST.get('email')
         pass1=req.POST.get('pass1')
         pass2=req.POST.get('pass2')
+        print(use)
         
         if pass1!=pass2:
             messages.error(req ,"passwords do not match")
-           
-        myuser=User.objects.create_user(use,email,pass1)
-        myuser.first_name=fname
-        myuser.last_name=lname
-        myuser.save() 
-        messages.success(req , "Successfully created")
-        return redirect('login')
+        else:
+            myuser=User.objects.create_user(use,email,pass1)
+            myuser.first_name=fname
+            myuser.last_name=lname
+            myuser.save() 
+            messages.success(req , "Successfully created")
+            return redirect('login')
     else:      
         return render(req,'signup.html')
+    
 
 def home(respons):
     return render(respons,'home.html')
 
 def about(respons):
     return render(respons,'about.html')
+
+def logout(request):
+    django_logout(request)
+    return redirect('login')
 
 
 
