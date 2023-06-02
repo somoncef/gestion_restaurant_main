@@ -45,11 +45,14 @@ def removefromcart(request, id):
     cart_item.delete()
     return redirect('cart')
 
-def addquantity(request, id,qyant):
+def addquantity(request, id, quantity):
     cart_item = get_object_or_404(Cartitem, id=id)
-    cart_item.quantity += qyant
+    cart_item.quantity = int(quantity)
+    cart_item.save()
     return redirect('cart')
-def removequantity(request, id,qyant):
+
+def removequantity(request, id,quantity):
     cart_item = get_object_or_404(Cartitem, id=id)
-    cart_item.quantity -= qyant
+    cart_item.quantity = int(quantity)
+    cart_item.save()
     return redirect('cart')
