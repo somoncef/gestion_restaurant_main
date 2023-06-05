@@ -37,7 +37,7 @@ def cart(request):
         cart, created = Cart.objects.get_or_create(user=request.user, complete=False)
         cartitems = cart.cartitem.all()
     
-    context = {"cart":cart, "items":cartitems}
+    context = {"cart":cart , "items":cartitems}
     return render(request, "cart.html", context)
 
 def removefromcart(request, id):
