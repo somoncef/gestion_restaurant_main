@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <header class="py-5">
   <div class="container px-5">
     <div class="row justify-content-center">
@@ -13,9 +13,7 @@
             our open source, free products, or support us by purchasing one of
             our premium products or services.
           </p>
-          <a class="btn btn-primary btn-lg" href="#scroll-target"
-            >Read our story</a
-          >
+          
         </div>
       </div>
     </div>
@@ -28,7 +26,7 @@
       <div class="col-lg-6">
         <img
           class="img-fluid rounded mb-5 mb-lg-0"
-          src="https://dummyimage.com/600x400/343a40/6c757d"
+          src="{% static 'images/regal2.png' %}"
           alt="..."
         />
       </div>
@@ -51,7 +49,7 @@
       <div class="col-lg-6 order-first order-lg-last">
         <img
           class="img-fluid rounded mb-5 mb-lg-0"
-          src="https://dummyimage.com/600x400/343a40/6c757d"
+          src="{% static 'images/regal3.png' %}"
           alt="..."
         />
       </div>
