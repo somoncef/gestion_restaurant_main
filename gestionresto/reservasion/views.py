@@ -1,5 +1,5 @@
 import datetime
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .models import Reservation
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -24,3 +24,10 @@ def make_reservation(request):
         print(reservation_obj)
 
     return render(request, 'reservation.html', {'reservation': reserv})
+
+def removereservation(request,id):
+    reserv = get_object_or_404(Reservation, id=id)
+    reserv.delete()
+    return redirect(default)
+    
+

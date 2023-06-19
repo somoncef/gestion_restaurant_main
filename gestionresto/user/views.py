@@ -8,13 +8,22 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic import TemplateView, CreateView
+from django.core.exceptions import ObjectDoesNotExist
+
 
 
 @login_required
+
 def default(request):
     profile = UserProfile.objects.get(user=request.user)
-    reservation = Reservation.objects.get(user=request.user)
-    return render(request, 'profile.html', {'profile': profile, "reservation": reservation})
+    try:
+        reservation = Reservation.objects.get(user=request.user)
+        if reservation is not None:
+            return render(request, 'profile.html', {'profile': profile, 'reservation': reservation})
+    except Reservation.DoesNotExist:
+        pass
+
+    return render(request, 'profile.html', {'profile': profile})
 
 @login_required
 def profileupdate(request):

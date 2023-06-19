@@ -70,15 +70,18 @@
               </div>
             </div>
           </div>
+          {% if reservation is not null %}
           <div class="card" style="width: 18rem;">
             <div class="card-header">
-              Reservation
+              Reservation <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a href="/reservation/removereservat/{{reservation.id}}" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+              </div>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Temps de reservation :{{reservation.date}}</li>
               <li class="list-group-item">Nombre de personne :{{reservation.nbrpersonne}}</li>
             </ul>
-            
+            {% endif %}
           </div>
                 </div>
               </div>
