@@ -49,7 +49,7 @@ def signup(req):
             myuser.first_name = fname
             myuser.last_name = lname
             myuser.save() 
-            myprofile = UserProfile.objects.create(myuser)
+            myprofile = UserProfile.objects.create(user=myuser)
             myprofile.save()
             messages.success(req, "Successfully created")
             return redirect('login')
