@@ -14,12 +14,21 @@
           <div
             class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start"
           >
-            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features"
-              >𝘾𝙤𝙢𝙢𝙖𝙣𝙙𝙚𝙧</a
-            >
-            <a class="btn btn-outline-light btn-lg px-4" href="#!"
-              >𝘾𝙧𝙚𝙚 𝙐𝙣 𝘾𝙤𝙢𝙥𝙩𝙚</a
-            >
+          {% if user.is_authenticated %}
+          <a class="btn btn-primary btn-lg px-4 me-sm-3" href="/items"
+          >𝘾𝙤𝙢𝙢𝙖𝙣𝙙𝙚𝙧</a
+        >
+              
+            {% else %}
+            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="/items"
+          >𝘾𝙤𝙢𝙢𝙖𝙣𝙙𝙚𝙧</a
+        >
+            <a class="btn btn-outline-light btn-lg px-4" href="/signup"
+            >𝘾𝙧𝙚𝙚 𝙐𝙣 𝘾𝙤𝙢𝙥𝙩𝙚</a
+          >
+          {% endif %}
+            
+            
           </div>
         </div>
       </div>
@@ -82,7 +91,7 @@
             <div class="badge bg-primary bg-gradient rounded-pill mb-2">
               Service
             </div>
-            <a class="text-decoration-none link-dark stretched-link" href="#!"
+            <a class="text-decoration-none link-dark stretched-link" href="/items"
               ><h5 class="card-title mb-3">Passer Une Commande</h5></a
             >
             <p class="card-text mb-0">
@@ -106,7 +115,7 @@
             <div class="badge bg-primary bg-gradient rounded-pill mb-2">
               Service
             </div>
-            <a class="text-decoration-none link-dark stretched-link" href="#!"
+            <a class="text-decoration-none link-dark stretched-link" href="/reservation"
               ><h5 class="card-title mb-3">Réservation En Ligne</h5></a
             >
             <p class="card-text mb-0">

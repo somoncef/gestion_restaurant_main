@@ -1,0 +1,122 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container">
+    <div class=" text-center mt-5 ">
+
+        <h1 >Reserver Une table Chez Nous</h1>
+            
+    </div>
+
+
+<div class="row ">
+  <div class="col-lg-7 mx-auto">
+    <div class="card mt-2 mx-auto p-4 bg-light">
+        <div class="card-body bg-light">
+   
+        <div class = "container">
+    <form method="POST" action="">
+     {% csrf_token %}
+
+        
+
+        <div class="controls">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">Date et temp de reservation </label>
+                        <input id="datetimepicker" name="dater" id="dater" type="text">                        
+                    </div>
+                </div>
+                
+
+     <script>
+      $(function () {
+      $("#datetimepicker").datetimepicker();
+      });
+     </script>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group1">
+                        <label for="form_email">Nombre de personnes</label>
+                        <div class="form-outline" style="width: 22rem;">
+                            <input min="1" max="6" type="number" name="nbrpers" id="nbrpers" class="form-control" />    
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-groupp">
+                        <label for="form_message">Commentaire</label>
+                        <textarea id="form_message" name="Commentaire" id="Commentaire" class="form-control" placeholder="Write your message here." rows="4"   data-error="Please, leave us a message."></textarea
+                            >
+                        </div>
+
+                    </div>
+
+
+                <div class="col-md-12">
+                    
+                    <input type="submit" class="btn btn-success btn-send  pt-2 btn-block
+                        " value="reserve" >
+                
+            </div>
+      
+            </div>
+
+
+     </div>
+     </form>
+    </div>
+        </div>
+
+
+</div>
+    <!-- /.8 -->
+
+</div>
+<!-- /.row-->
+
+</div>
+</div>
+<style>
+    .form-group{
+
+        margin-left: 150px;
+    }
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    margin-bottom: 40px;
+}
+
+label {
+    color: #333;
+}
+
+.btn-send {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    width: 80%;
+    margin-left: 3px;
+    }
+.help-block.with-errors {
+    color: #ff5050;
+    margin-top: 5px;
+
+}
+
+.card{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+</style>
+
+
+
+{% endblock %}

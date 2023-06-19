@@ -1,0 +1,142 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- <div id="filter-section">
+  <h2>Filter</h2>
+  <form>
+    <label for="price">Price Range:</label>
+    <input type="range" id="price" name="price" min="0" max="100" step="10">
+         <br>      
+    <label for="brand">Brand:</label>
+    <select id="brand" name="brand">
+        {% for c in cat %}
+           <option value="{{c}}">{{c}}</option>
+                 {% endfor %}
+
+    </select>
+    
+
+     Add more filter options based on your criteria 
+
+    <input type="submit" value="Apply Filters">
+  </form>
+</div> -->
+
+
+<div class="row gy-3 my-3">
+    {% for item in items %}
+    <div class="col-md-3 mt-2">
+        <div class="container-fluid">
+            <div class="card mx-auto col-md-3 col-10 mt-2">
+                <!-- Adjust the mt-2 class for vertical spacing -->
+                <img class="mx-auto img-thumbnail" src="{{item.image.url}}" width="auto" height="auto" />
+                <div class="card-body text-center mx-auto d-flex flex-column">
+                    <div class="cvp">
+                        <h5 class="card-title font-weight-bold">{{item.name}}</h5>
+                        <p class="card-text">{{item.price}} dh</p>
+                        <p class="card-text">{{item.categories}}</p>
+                        <a href="#" class="btn details">view details</a><br />
+                        <button value="{{item.id}}" type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    body {
+        background: #E0E0E0;
+    }
+
+    .details {
+        border: 1.5px solid grey;
+        color: #212121;
+        width: 100%;
+        height: auto;
+        box-shadow: 0px 0px 10px #212121;
+    }
+
+    .cart {
+        background-color: #212121;
+        color: white;
+        margin-top: 10px;
+        font-size: 12px;
+        font-weight: 900;
+        width: 100%;
+        height: 39px;
+        padding-top: 9px;
+        box-shadow: 0px 5px 10px #212121;
+    }
+
+    .card {
+        width: fit-content;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-body {
+        width: fit-content;
+        flex-grow: 1;
+    }
+
+    .btn {
+        border-radius: 0;
+    }
+
+    .img-thumbnail {
+        border: none;
+    }
+
+    .card {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+        border-radius: 5px;
+        padding-bottom: 10px;
+    }
+</style>
+
+    <script>
+        function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+
+
+let btns=document.querySelectorAll(".btn")
+btns.forEach(btn => {
+    btn.addEventListener("click",addToCart)
+});
+function addToCart(e) {
+  let item_id = e.target.value;
+  let url = "/items/addtocart/";
+  let data = { id: item_id };
+
+  fetch(url, {
+    method: "POST",
+    headers: {"Content-Type":"application/json", 'X-CSRFToken': csrftoken},
+    body: JSON.stringify(data)
+})
+.then(res=>res.json())
+.then(data=>{
+    console.log(data)
+})
+
+}
+
+    </script>
+    
+
+{% endblock %}

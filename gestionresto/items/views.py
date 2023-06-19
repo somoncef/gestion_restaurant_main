@@ -13,7 +13,13 @@ def default(request):
         return [category[0] for category in categories]
     items = item.objects.all()
     cat=get_all_categories()
-    return render(request, 'items.html', {'items': items,'cat': cat})
+    pizza = item.objects.filter(categories='pizza')
+    burger = item.objects.filter(categories='burger')
+    salade = item.objects.filter(categories='salade')
+    tacos = item.objects.filter(categories='tacos')
+    sandwich = item.objects.filter(categories='sandwich')
+
+    return render(request, 'item1.html', {'items': items,'cat': cat,'pizza': pizza,'burger': burger,'salade': salade,'tacos': tacos,'sandwich': sandwich})
 
 def addtocart(req):
     data=json.loads(req.body)

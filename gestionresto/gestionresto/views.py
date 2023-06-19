@@ -6,6 +6,7 @@ from django.contrib import messages
 from items import views as v
 from django.http import JsonResponse
 from django.contrib.auth import logout as django_logout
+from user.models import UserProfile
 
 
 
@@ -28,27 +29,33 @@ def index(req):
     return render(req,'login.html',)
     
 
+
+
 def signup(req):
     if req.method == 'POST':
-        use=req.POST.get('username')
-        lname=req.POST.get('lname')
-        fname=req.POST.get('fname')
-        email=req.POST.get('email')
-        pass1=req.POST.get('pass1')
-        pass2=req.POST.get('pass2')
-        print(use)
+        use = req.POST.get('username')
+        lname = req.POST.get('lname')
+        fname = req.POST.get('fname')
+        email = req.POST.get('email')
+        pass1 = req.POST.get('pass1')
+        pass2 = req.POST.get('pass2')
         
-        if pass1!=pass2:
-            messages.error(req ,"passwords do not match")
+        if not use:
+            messages.error(req, "The given username must be set")
+        elif pass1 != pass2:
+            messages.error(req, "Passwords do not match")
         else:
-            myuser=User.objects.create_user(use,email,pass1)
-            myuser.first_name=fname
-            myuser.last_name=lname
+            myuser = User.objects.create_user(use, email, pass1)
+            myuser.first_name = fname
+            myuser.last_name = lname
             myuser.save() 
-            messages.success(req , "Successfully created")
+            myprofile = UserProfile.objects.create(myuser)
+            myprofile.save()
+            messages.success(req, "Successfully created")
             return redirect('login')
-    else:      
-        return render(req,'signup.html')
+    
+    return render(req, 'signup.html')
+
     
 
 def home(respons):

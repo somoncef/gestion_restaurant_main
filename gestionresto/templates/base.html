@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- XDSoft DateTimePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="https://kit.fontawesome.com/2c95e9d3d4.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -36,10 +41,17 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/about">About</a>
             </li>
+            
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/reservation">Reservation</a>
+            </li>
+            
           </ul>
           {% if user.is_authenticated %}
               <a class="link" href="/logout/">𝙡𝙤𝙜𝙤𝙪𝙩  <i class="fa-solid fa-right-from-bracket"></i></a>
               <a class="link" href="/items/cart/">𝙘𝙖𝙧𝙩  <i class="fa-solid fa-cart-shopping"></i> </a>
+              <a class="link" href="/user/">𝙥𝙧𝙤𝙛𝙞𝙡𝙚<i class="fa-solid fa-user"></i> </a>
+
               
             {% else %}
               <a class="link" href="/signup">𝙨𝙞𝙜𝙣𝙪𝙥  <i class="fa-solid fa-user-plus"></i></a>
